@@ -6,7 +6,7 @@ pub use self::gm17::Gm17;
 pub mod groth16;
 pub use self::groth16::Groth16;
 
-use failure::Error;
+use crate::Error;
 
 pub trait NIZK {
     type Circuit;
