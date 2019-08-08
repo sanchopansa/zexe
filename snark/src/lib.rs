@@ -8,7 +8,6 @@
     unused_qualifications,
     variant_size_differences,
     stable_features,
-    unreachable_pub
 )]
 #![deny(
     non_shorthand_field_patterns,
@@ -30,6 +29,7 @@
 extern crate bench_utils;
 
 pub mod gm17;
+pub mod groth16;
 
 use algebra::{Field, PairingEngine};
 
