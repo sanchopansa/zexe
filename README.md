@@ -1,7 +1,6 @@
 <h1 align="center">ZEXE (Zero knowledge EXEcution)</h1>
-
 <p align="center">
-    <a href="https://travis-ci.org/scipr-lab/zexe"><img src="https://travis-ci.org/scipr-lab/zexe.svg?branch=master"></a>
+    <a href="https://circleci.com/gh/filecoin-project/zexe/tree/master"><img src="https://circleci.com/gh/filecoin-project/zexe/tree/master.svg?style=svg"></a>
     <a href="https://github.com/scipr-lab/zexe/blob/master/AUTHORS"><img src="https://img.shields.io/badge/authors-SCIPR%20Lab-orange.svg"></a>
     <a href="https://github.com/scipr-lab/zexe/blob/master/LICENSE-APACHE"><img src="https://img.shields.io/badge/license-APACHE-blue.svg"></a>
    <a href="https://github.com/scipr-lab/zexe/blob/master/LICENSE-MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
@@ -54,7 +53,7 @@ cargo build --release
 This library comes with unit tests for each of the provided crates. Run the tests with:
 ```bash
 cargo test
-``` 
+```
 
 Lastly, this library comes with benchmarks for the following crates:
 
@@ -79,8 +78,8 @@ Unless you explicitly state otherwise, any contribution submitted for inclusion 
 
 ## Reference paper
 
-[_ZEXE: Enabling Decentralized Private Computation_][zexe]    
-[Sean Bowe](https://www.github.com/ebfull), Alessandro Chiesa, Matthew Green, Ian Miers, [Pratyush Mishra](https://www.github.com/pratyush), [Howard Wu](https://www.github.com/howardwu)    
+[_ZEXE: Enabling Decentralized Private Computation_][zexe]
+[Sean Bowe](https://www.github.com/ebfull), Alessandro Chiesa, Matthew Green, Ian Miers, [Pratyush Mishra](https://www.github.com/pratyush), [Howard Wu](https://www.github.com/howardwu)
 *IACR ePrint Report 2018/962*
 
 ## Acknowledgements
