@@ -364,9 +364,9 @@ impl<E: PairingEngine> FromBytes for Parameters<E> {
 
         Ok(Parameters {
             vk,
-            h:    Arc::new(h),
-            l:    Arc::new(l),
-            a:    Arc::new(a),
+            h: Arc::new(h),
+            l: Arc::new(l),
+            a: Arc::new(a),
             b_g1: Arc::new(b_g1),
             b_g2: Arc::new(b_g2),
         })

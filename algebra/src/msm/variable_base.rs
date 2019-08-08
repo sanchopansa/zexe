@@ -132,14 +132,13 @@ mod test {
         assert_eq!(naive.into_affine(), fast.into_affine());
     }
 
-
     #[test]
     fn test_with_bls12_unequal_numbers() {
         const SAMPLES: usize = 1 << 10;
 
         let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
 
-        let v = (0..SAMPLES-1)
+        let v = (0..SAMPLES - 1)
             .map(|_| <Bls12_381 as PairingEngine>::Fr::rand(&mut rng).into_repr())
             .collect::<Vec<_>>();
         let g = (0..SAMPLES)

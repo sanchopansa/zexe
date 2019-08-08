@@ -15,10 +15,10 @@ use crate::utils::{
 };
 
 use crate::{
+    utils::CondReverseGadget,
     Assignment,
     ConstraintVar::{self, *},
 };
-use crate::utils::CondReverseGadget;
 
 #[derive(Derivative)]
 #[derivative(Debug(bound = "E: Debug"))]
@@ -36,32 +36,22 @@ impl<E: PairingEngine> FpGadget<E> {
 
 /// create a public copy for an existing FpGadget
 impl<E: PairingEngine> FpGadget<E> {
-
-    pub fn inputize<CS>(
-        &self,
-        mut cs: CS
-    ) -> Result<(), SynthesisError>
-        where CS: ConstraintSystem<E>
+    pub fn inputize<CS>(&self, mut cs: CS) -> Result<(), SynthesisError>
+    where
+        CS: ConstraintSystem<E>,
     {
-        let input = cs.alloc_input(
-            || "input variable",
-            || {
-                Ok(self.value.get()?)
-            }
-        )?;
+        let input = cs.alloc_input(|| "input variable", || Ok(self.value.get()?))?;
 
         cs.enforce(
             || "enforce input is correct",
             |lc| lc + input,
             |lc| lc + CS::one(),
-            |lc| &self.variable + lc
+            |lc| &self.variable + lc,
         );
 
         Ok(())
     }
-
 }
-
 
 impl<E: PairingEngine> FieldGadget<E::Fr, E> for FpGadget<E> {
     type Variable = ConstraintVar<E>;
@@ -516,45 +506,42 @@ impl<E: PairingEngine> CondReverseGadget<E> for FpGadget<E> {
         mut cs: CS,
         cond: &Boolean,
         first: &Self,
-        second: &Self
+        second: &Self,
     ) -> Result<(Self, Self), SynthesisError> {
-
         // Allocate the first element to be returned
-        let f = Self::alloc(
-            cs.ns(|| "conditional reversal result 1" ),
-            || {
-                cond.get_value()
-                    .and_then(|cond| if cond { second } else { first }.get_value())
-                    .get()
-            })?;
+        let f = Self::alloc(cs.ns(|| "conditional reversal result 1"), || {
+            cond.get_value()
+                .and_then(|cond| if cond { second } else { first }.get_value())
+                .get()
+        })?;
 
         cs.enforce(
-            ||"first conditional reversal",
+            || "first conditional reversal",
             |lc| (&first.variable - &second.variable) + lc,
             |_| cond.lc(CS::one(), E::Fr::one()),
-            |lc| (&first.variable - &f.variable) + lc
+            |lc| (&first.variable - &f.variable) + lc,
         );
 
         // Allocate the second element to be returned
-        let s = Self::alloc(
-            cs.ns(|| "conditional reversal result 2" ),
-            || {
-                cond.get_value()
-                    .and_then(|cond| if cond { first } else { second }.get_value())
-                    .get()
-            })?;
+        let s = Self::alloc(cs.ns(|| "conditional reversal result 2"), || {
+            cond.get_value()
+                .and_then(|cond| if cond { first } else { second }.get_value())
+                .get()
+        })?;
 
         cs.enforce(
-            ||"second conditional reversal",
+            || "second conditional reversal",
             |lc| (&second.variable - &first.variable) + lc,
             |_| cond.lc(CS::one(), E::Fr::one()),
-            |lc| (&second.variable - &s.variable) + lc
+            |lc| (&second.variable - &s.variable) + lc,
         );
 
         Ok((f, s))
     }
 
-    fn cost() -> usize { 2 }
+    fn cost() -> usize {
+        2
+    }
 }
 
 /// Uses two bits to perform a lookup into a table

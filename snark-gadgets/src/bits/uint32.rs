@@ -19,7 +19,9 @@ pub struct UInt32 {
 }
 
 impl UInt32 {
-    pub fn get_value(&self) -> Option<u32> { self.value }
+    pub fn get_value(&self) -> Option<u32> {
+        self.value
+    }
 
     /// Construct a constant `UInt32` from a `u32`
     pub fn constant(value: u32) -> Self {

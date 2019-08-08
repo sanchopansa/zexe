@@ -1,5 +1,5 @@
-use algebra::bytes::ToBytes;
 use crate::Error;
+use algebra::bytes::ToBytes;
 use rand::Rng;
 use std::hash::Hash;
 

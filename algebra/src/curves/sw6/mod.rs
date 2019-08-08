@@ -1,7 +1,7 @@
-use crate::field_new;
 use crate::{
     biginteger::BigInteger832,
     curves::{PairingCurve, PairingEngine},
+    field_new,
     fields::{
         sw6::{
             fq::{Fq, FqParameters},

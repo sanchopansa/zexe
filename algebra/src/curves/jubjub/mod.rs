@@ -1,10 +1,10 @@
-use crate::field_new;
 use crate::{
     biginteger::BigInteger256,
     curves::{
         models::{ModelParameters, TEModelParameters},
         twisted_edwards_extended::{GroupAffine, GroupProjective},
     },
+    field_new,
     fields::jubjub::{fq::Fq, fr::Fr},
 };
 use std::str::FromStr;
@@ -15,18 +15,24 @@ mod tests;
 pub type JubJubAffine = GroupAffine<JubJubParameters>;
 pub type JubJubProjective = GroupProjective<JubJubParameters>;
 
-const GENERATOR_X: Fq = field_new!(Fq, BigInteger256([
-    14080349899812819339,
-    4104857150246327429,
-    8293216003873356624,
-    7400363483732984990,
-]));
-const GENERATOR_Y: Fq = field_new!(Fq, BigInteger256([
-    13388310974700241893,
-    7654361511478576605,
-    8037907163910805792,
-    5188938133920569885,
-]));
+const GENERATOR_X: Fq = field_new!(
+    Fq,
+    BigInteger256([
+        14080349899812819339,
+        4104857150246327429,
+        8293216003873356624,
+        7400363483732984990,
+    ])
+);
+const GENERATOR_Y: Fq = field_new!(
+    Fq,
+    BigInteger256([
+        13388310974700241893,
+        7654361511478576605,
+        8037907163910805792,
+        5188938133920569885,
+    ])
+);
 
 /// `JubJub` is a twisted Edwards curve. These curves have equations of the
 /// form: ax² + y² = 1 - dx²y².
@@ -59,32 +65,41 @@ impl ModelParameters for JubJubParameters {
 
 impl TEModelParameters for JubJubParameters {
     /// COEFF_A = -1
-    const COEFF_A: Fq = field_new!(Fq, BigInteger256([
-        18446744060824649731,
-        18102478225614246908,
-        11073656695919314959,
-        6613806504683796440,
-    ]));
+    const COEFF_A: Fq = field_new!(
+        Fq,
+        BigInteger256([
+            18446744060824649731,
+            18102478225614246908,
+            11073656695919314959,
+            6613806504683796440,
+        ])
+    );
 
     /// COEFF_D = (10240/10241) mod q
-    const COEFF_D: Fq = field_new!(Fq, BigInteger256([
-        3049539848285517488,
-        18189135023605205683,
-        8793554888777148625,
-        6339087681201251886,
-    ]));
+    const COEFF_D: Fq = field_new!(
+        Fq,
+        BigInteger256([
+            3049539848285517488,
+            18189135023605205683,
+            8793554888777148625,
+            6339087681201251886,
+        ])
+    );
 
     /// COFACTOR = 8
     const COFACTOR: &'static [u64] = &[8];
 
     /// COFACTOR^(-1) mod r =
     /// 819310549611346726241370945440405716213240158234039660170669895299022906775
-    const COFACTOR_INV: Fr = field_new!(Fr, BigInteger256([
-        6832491983681988242,
-        12911748493335322362,
-        17523939349049608702,
-        217463794347581613,
-    ]));
+    const COFACTOR_INV: Fr = field_new!(
+        Fr,
+        BigInteger256([
+            6832491983681988242,
+            12911748493335322362,
+            17523939349049608702,
+            217463794347581613,
+        ])
+    );
 
     /// AFFINE_GENERATOR_COEFFS = (GENERATOR_X, GENERATOR_Y)
     const AFFINE_GENERATOR_COEFFS: (Self::BaseField, Self::BaseField) = (GENERATOR_X, GENERATOR_Y);

@@ -1,7 +1,7 @@
 use super::CommitmentScheme;
+use crate::Error;
 use blake2::Blake2s as b2s;
 use digest::Digest;
-use crate::Error;
 use rand::Rng;
 
 pub struct Blake2sCommitment;

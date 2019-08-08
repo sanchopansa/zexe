@@ -27,7 +27,6 @@ pub trait Fp832Parameters: FpParameters<BigInt = BigInteger> {}
 )]
 pub struct Fp832<P: Fp832Parameters>(
     pub BigInteger,
-
     #[derivative(Debug = "ignore")]
     #[doc(hidden)]
     pub PhantomData<P>,

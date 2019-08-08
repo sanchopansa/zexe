@@ -30,22 +30,22 @@ pub use self::models::*;
 macro_rules! field_new {
     ($name:ident, $c0:expr) => {
         $name {
-            0: $c0, 
-            1: std::marker::PhantomData
+            0: $c0,
+            1: std::marker::PhantomData,
         }
     };
     ($name:ident, $c0:expr, $c1:expr $(,)?) => {
         $name {
-            c0: $c0,
-            c1: $c1,
+            c0:          $c0,
+            c1:          $c1,
             _parameters: std::marker::PhantomData,
         }
     };
     ($name:ident, $c0:expr, $c1:expr, $c2:expr $(,)?) => {
         $name {
-            c0: $c0,
-            c1: $c1,
-            c2: $c2,
+            c0:          $c0,
+            c1:          $c1,
+            c2:          $c2,
             _parameters: std::marker::PhantomData,
         }
     };

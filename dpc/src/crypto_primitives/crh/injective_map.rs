@@ -1,6 +1,5 @@
-use crate::crypto_primitives::CryptoError;
+use crate::{crypto_primitives::CryptoError, Error};
 use algebra::bytes::ToBytes;
-use crate::Error;
 use rand::Rng;
 use std::{fmt::Debug, hash::Hash, marker::PhantomData};
 

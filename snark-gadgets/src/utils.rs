@@ -153,7 +153,8 @@ where
     fn cost() -> usize;
 }
 
-/// If condition is `true`, return (`second`, `first`); else, return (`first`, `second`).
+/// If condition is `true`, return (`second`, `first`); else, return (`first`,
+/// `second`).
 pub trait CondReverseGadget<E: PairingEngine>
 where
     Self: Sized,

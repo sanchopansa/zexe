@@ -1,5 +1,5 @@
-use algebra::{to_bytes, PairingEngine};
 use crate::Error;
+use algebra::{to_bytes, PairingEngine};
 use rand::{Rand, Rng};
 use std::marker::PhantomData;
 
@@ -838,7 +838,11 @@ where
 
         let sig_time = timer_start!(|| "Signature verification (in parallel)");
         let sig_pp = &parameters.comm_crh_sig_pp.sig_pp;
-        for (pk, sig) in  transaction.old_serial_numbers().iter().zip(&transaction.stuff.signatures) {
+        for (pk, sig) in transaction
+            .old_serial_numbers()
+            .iter()
+            .zip(&transaction.stuff.signatures)
+        {
             result &= Components::S::verify(sig_pp, pk, signature_message, sig)?;
         }
         timer_end!(sig_time);

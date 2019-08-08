@@ -1,4 +1,4 @@
-use crate::crypto_primitives::SignatureScheme;
+use crate::{crypto_primitives::SignatureScheme, Error};
 use algebra::{
     bytes::ToBytes,
     fields::{Field, PrimeField},
@@ -6,7 +6,6 @@ use algebra::{
     to_bytes,
 };
 use digest::Digest;
-use crate::Error;
 use rand::{Rand, Rng};
 use std::{
     hash::Hash,

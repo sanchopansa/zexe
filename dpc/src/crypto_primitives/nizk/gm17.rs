@@ -1,5 +1,5 @@
-use algebra::PairingEngine;
 use crate::Error;
+use algebra::PairingEngine;
 use rand::Rng;
 use snark::{
     gm17::{

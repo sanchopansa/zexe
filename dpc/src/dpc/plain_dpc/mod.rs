@@ -1,5 +1,5 @@
-use algebra::{to_bytes, PairingEngine};
 use crate::Error;
+use algebra::{to_bytes, PairingEngine};
 use rand::{Rand, Rng};
 use std::marker::PhantomData;
 

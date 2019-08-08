@@ -1,7 +1,7 @@
-use crate::field_new;
 use crate::{
     biginteger::BigInteger320,
     curves::{PairingCurve, PairingEngine, ProjectiveCurve},
+    field_new,
     fields::{
         mnt6::{
             fq::{Fq, FqParameters},
@@ -302,16 +302,20 @@ impl MNT6 {
 pub const TWIST: Fq3 = field_new!(Fq3, FQ_ZERO, FQ_ONE, FQ_ZERO);
 pub const FQ_ZERO: Fq = field_new!(Fq, BigInteger320([0, 0, 0, 0, 0]));
 pub const FQ_ONE: Fq = field_new!(Fq, FqParameters::R);
-pub const TWIST_COEFF_A: Fq3 = field_new!(Fq3, 
+pub const TWIST_COEFF_A: Fq3 = field_new!(
+    Fq3,
     FQ_ZERO,
     FQ_ZERO,
-    field_new!(Fq, BigInteger320([
-        0xb9b2411bfd0eafef,
-        0xc61a10fadd9fecbd,
-        0x89f128e59811f3fb,
-        0x980c0f780adadabb,
-        0x9ba1f11320,
-    ])),
+    field_new!(
+        Fq,
+        BigInteger320([
+            0xb9b2411bfd0eafef,
+            0xc61a10fadd9fecbd,
+            0x89f128e59811f3fb,
+            0x980c0f780adadabb,
+            0x9ba1f11320,
+        ])
+    ),
 );
 
 pub const ATE_LOOP_COUNT: [u64; 3] = [0xdc9a1b671660000, 0x46609756bec2a33f, 0x1eef55];

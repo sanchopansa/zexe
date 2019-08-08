@@ -30,7 +30,6 @@ impl std::fmt::Display for LedgerError {
             LedgerError::DuplicateMemo => "duplicate memo pushed to ledger",
             LedgerError::InvalidCm => "invalid cm pushed to ledger",
             LedgerError::InvalidCmIndex => "invalid cm index during proving",
-
         };
         write!(f, "{}", msg)
     }

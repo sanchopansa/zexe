@@ -1,6 +1,5 @@
-use crate::{config::MAX_MERKLE_TREE_HEIGHT, crypto_primitives::crh::FixedLengthCRH};
+use crate::{config::MAX_MERKLE_TREE_HEIGHT, crypto_primitives::crh::FixedLengthCRH, Error};
 use algebra::bytes::ToBytes;
-use crate::Error;
 use std::{fmt, marker::PhantomData, rc::Rc};
 
 #[derive(Debug)]

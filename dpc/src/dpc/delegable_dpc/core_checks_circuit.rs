@@ -1,5 +1,5 @@
-use algebra::PairingEngine;
 use crate::Error;
+use algebra::PairingEngine;
 use snark::{Circuit, ConstraintSystem, SynthesisError};
 
 use crate::{

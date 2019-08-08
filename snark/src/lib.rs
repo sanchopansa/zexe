@@ -4,11 +4,7 @@
     trivial_casts,
     trivial_numeric_casts
 )]
-#![deny(
-    unused_qualifications,
-    variant_size_differences,
-    stable_features,
-)]
+#![deny(unused_qualifications, variant_size_differences, stable_features)]
 #![deny(
     non_shorthand_field_patterns,
     unused_attributes,
@@ -22,7 +18,13 @@
     unused_comparisons,
     bare_trait_objects
 )]
-#![deny(const_err, unused_must_use, unused_mut, unused_unsafe, private_in_public)]
+#![deny(
+    const_err,
+    unused_must_use,
+    unused_mut,
+    unused_unsafe,
+    private_in_public
+)]
 #![forbid(unsafe_code)]
 
 #[macro_use]

@@ -1,5 +1,5 @@
-use algebra::{utils::*, Group, PairingEngine};
 use crate::Error;
+use algebra::{utils::*, Group, PairingEngine};
 
 use crate::{
     crypto_primitives::{

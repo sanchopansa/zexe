@@ -28,7 +28,6 @@ pub trait Fp320Parameters: FpParameters<BigInt = BigInteger> {}
 )]
 pub struct Fp320<P: Fp320Parameters>(
     pub BigInteger,
-
     #[derivative(Debug = "ignore")]
     #[doc(hidden)]
     pub PhantomData<P>,

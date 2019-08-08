@@ -28,7 +28,6 @@ pub trait Fp768Parameters: FpParameters<BigInt = BigInteger> {}
 )]
 pub struct Fp768<P: Fp768Parameters>(
     pub BigInteger,
-
     #[derivative(Debug = "ignore")]
     #[doc(hidden)]
     pub PhantomData<P>,

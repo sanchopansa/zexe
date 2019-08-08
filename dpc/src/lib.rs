@@ -56,6 +56,6 @@ pub mod gadgets;
 pub mod ledger;
 pub mod predicates;
 
-pub type Error  = Box<dyn std::error::Error>;
+pub type Error = Box<dyn std::error::Error>;
 
 pub use crate::dpc::*;
