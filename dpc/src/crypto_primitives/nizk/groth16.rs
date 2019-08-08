@@ -1,5 +1,4 @@
 use algebra::PairingEngine;
-use failure::Error;
 use rand::Rng;
 use snark::{
     groth16::{
@@ -13,6 +12,7 @@ use algebra::utils::ToEngineFr;
 use std::marker::PhantomData;
 
 use super::NIZK;
+use crate::Error;
 
 /// Note: V should serialize its contents to `Vec<E::Fr>` in the same order as
 /// during the constraint generation.
@@ -54,7 +54,7 @@ impl<E: PairingEngine, C: Circuit<E>, V: ToEngineFr<E> + ?Sized> NIZK for Groth1
         rng: &mut R,
     ) -> Result<Self::Proof, Error> {
         let proof_time = timer_start!(|| "{Groth-Maller 2017}::Prove");
-        let result = create_random_proof::<E, _, _,_>(input_and_witness, pp, rng)?;
+        let result = create_random_proof::<E, _, _, _>(input_and_witness, pp, rng)?;
         timer_end!(proof_time);
         Ok(result)
     }
