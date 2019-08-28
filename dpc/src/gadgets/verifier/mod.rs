@@ -23,3 +23,20 @@ pub trait NIZKVerifierGadget<N: NIZK, E: PairingEngine> {
         I: Iterator<Item = &'a T>,
         T: 'a + ToBitsGadget<E> + ?Sized;
 }
+
+pub trait NIZKBatchVerifierGadget<N: NIZK, E: PairingEngine> {
+    type VerificationKeyGadget: AllocGadget<N::VerificationParameters, E> + ToBytesGadget<E>;
+
+    type ProofGadget: AllocGadget<N::Proof, E>;
+
+    fn check_batch_verify<'a, CS, I, T>(
+        cs: CS,
+        verification_key: &Self::VerificationKeyGadget,
+        public_inputs: &mut [I],
+        proof_gadgets: &[Self::ProofGadget],
+    ) -> Result<(), SynthesisError>
+        where
+            CS: ConstraintSystem<E>,
+            I: Iterator<Item = &'a T>,
+            T: 'a + ToBitsGadget<E> + ?Sized;
+}
