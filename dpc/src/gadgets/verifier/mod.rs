@@ -24,10 +24,9 @@ pub trait NIZKVerifierGadget<N: NIZK, E: PairingEngine> {
         T: 'a + ToBitsGadget<E> + ?Sized;
 }
 
-pub trait NIZKBatchVerifierGadget<N: NIZK, E: PairingEngine> {
-    type VerificationKeyGadget: AllocGadget<N::VerificationParameters, E> + ToBytesGadget<E>;
-
-    type ProofGadget: AllocGadget<N::Proof, E>;
+pub trait NIZKBatchVerifierGadget<E: PairingEngine> {
+    type VerificationKeyGadget;
+    type ProofGadget;
 
     fn check_batch_verify<'a, CS, I, T>(
         cs: CS,

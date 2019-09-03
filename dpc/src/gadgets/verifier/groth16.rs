@@ -199,13 +199,11 @@ where
     }
 }
 
-impl<PairingE, ConstraintE, P, C, V> NIZKBatchVerifierGadget<Groth16<PairingE, C, V>, ConstraintE>
+impl<PairingE, ConstraintE, P> NIZKBatchVerifierGadget<ConstraintE>
     for Groth16VerifierGadget<PairingE, ConstraintE, P>
 where
     PairingE: PairingEngine,
     ConstraintE: PairingEngine,
-    C: Circuit<PairingE>,
-    V: ToEngineFr<PairingE>,
     P: PairingGadget<PairingE, ConstraintE>,
 {
     type VerificationKeyGadget = VerifyingKeyGadget<PairingE, ConstraintE, P>;
@@ -741,7 +739,7 @@ mod test {
             let mut inputs_batch_iter: Vec<_> =
                 multi_input_gadgets.iter().map(|x| x.iter()).collect();
 
-            <TestVerifierGadget as NIZKBatchVerifierGadget<TestProofSystem, SW6>>::check_batch_verify(cs.ns(|| "Verify"),
+            <TestVerifierGadget as NIZKBatchVerifierGadget<SW6>>::check_batch_verify(cs.ns(|| "Verify"),
                                                      &vk_gadget,
                                                      &mut inputs_batch_iter,
                                                      &proof_gadgets,
